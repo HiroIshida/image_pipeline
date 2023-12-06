@@ -362,7 +362,8 @@ class Calibrator():
         # TODO: get a Python API in cv_bridge to check for the image depth.
         if self.br.encoding_to_dtype_with_channels(msg.encoding)[0] in ['uint16', 'int16']:
             mono16 = self.br.imgmsg_to_cv2(msg, '16UC1')
-            mono8 = numpy.array(mono16 / 256, dtype=numpy.uint8)
+            # mono8 = numpy.array(mono16 / 256, dtype=numpy.uint8)
+            mono8 = numpy.array(mono16, dtype=numpy.uint8)
             return mono8
         elif 'FC1' in msg.encoding:
             # floating point image handling
